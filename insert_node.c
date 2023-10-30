@@ -2,10 +2,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"insert_node.h"
-int get_height(AVL_node node) {
-	if (node == NULL) return -1; // height of empty tree = -1
-	return node->height;
-}
+#include"height.h"
+#include"rotation.h"
 AVL_node insert_node(AVL_node root,int key) {
 	
 	// 자식 노드가 없으면 그 자리에 노드 추가
@@ -26,10 +24,24 @@ AVL_node insert_node(AVL_node root,int key) {
 	else if (key > root->key) {
 		root->right = insert_node(root->right, key); 
 	}
-
-	// update height, 높이가 높은 쪽의 높이 + 1 = 새로운 높이
-	root->height = get_height(root->left) > get_height(root->right) ? 1 + get_height(root->left) : 1 + get_height(root->right);
+	
+	// update height
+	update_height(root);
+	
 	int fb = get_height(root->left) - get_height(root->right);
+
+	if (fb > 1) {
+		if (get_height(root->left->left) > get_height(root->left->right)) {
+			root = R_Rotation(root);
+		}
+		else root = LR_Rotation(root);
+	}
+	if (fb < -1) {
+		if (get_height(root->right->left) < get_height(root->right->right)) {
+			root = L_Rotation(root);
+		}
+		else root = RL_Rotation(root);
+	}
 
 	return root;
 }
