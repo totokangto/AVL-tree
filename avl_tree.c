@@ -4,13 +4,10 @@
 #include"insert_node.h"
 
 int main(void) {
-	AVL_node a = NULL;
-	a = insert_node(a, 6);
-	printf("%d\n", a->key);
-	AVL_node b = insert_node(a, 3);
-	printf("%d\n", b->key);
-	printf("%d\n", a->left->key);
-	AVL_node c = insert_node(a, 4);
-	printf("%d\n", a->left->key);
+	AVL_node root = NULL;
+	root = insert_node(root, 6);
+	root = insert_node(root, 3);
+	root = insert_node(root, 4);
+	printf("%d\n", root->height);
 	return 0;
 }
