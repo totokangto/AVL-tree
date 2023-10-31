@@ -128,11 +128,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="avl_tree.c" />
+    <ClCompile Include="height.c" />
     <ClCompile Include="insert_node.c" />
+    <ClCompile Include="rotation.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="get_height.h" />
+    <ClInclude Include="height.h" />
     <ClInclude Include="insert_node.h" />
     <ClInclude Include="make_tree_node.h" />
+    <ClInclude Include="rotation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
