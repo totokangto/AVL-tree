@@ -6,6 +6,7 @@
 #include"rotation.h"
 AVL_node insert_node(AVL_node root, int key) {
 
+	// 1. find right space and insert node 
 	// 자식 노드가 없으면 그 자리에 노드 추가
 	if (root == NULL) {
 		AVL_node avl = (AVL_node)malloc(sizeof(struct node));
@@ -25,6 +26,7 @@ AVL_node insert_node(AVL_node root, int key) {
 		root->right = insert_node(root->right, key);
 	}
 
+	// 2. restore balance
 	// update height
 	update_height(root);
 	// balanced factor

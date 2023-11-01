@@ -6,7 +6,7 @@
 #include"rotation.h"
 AVL_node delete_node(AVL_node root, int key) {
 	
-	// 1. node 찾아서 삭제
+	// 1. find node and delete
 	// 없애려는 노드의 key가 root의 key보다 작으면 left subtree로 이동
 	if (key < root->key) {
 		root->left = delete_node(root->left, key);
@@ -25,13 +25,14 @@ AVL_node delete_node(AVL_node root, int key) {
 				temp = root;
 				root = NULL;
 			}
-			// node has 1 child
+			// node has one child
 			else
-				// root를 root의 자식 노드로 교체
+				// change root to left subtree of root
 				*root = *temp;			
 			free(temp);
 		}
 		else {
+			// node has two child
 			// root의 left subtree 중 가장 큰 key값을 갖는 node 찾기
 			AVL_node max = root->left;
 			while (max->right != NULL)
@@ -43,9 +44,10 @@ AVL_node delete_node(AVL_node root, int key) {
 		}
 	}
 
-	// 2. imbalance 잡기
+	// 2. restore balance
 	if (root == NULL)
 		return root;
+
 	update_height(root);
 	// balanced factor
 	int bf = get_height(root->left) - get_height(root->right);
