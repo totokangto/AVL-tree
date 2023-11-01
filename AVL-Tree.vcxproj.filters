@@ -27,6 +27,9 @@
     <ClCompile Include="height.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="delete_node.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="make_tree_node.h">
@@ -42,6 +45,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="height.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="delete_node.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
